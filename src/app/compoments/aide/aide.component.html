@@ -1,0 +1,20 @@
+<app-navbar/>
+<div class="container">
+    <h2 class="text-center mt-5">Aide et Support</h2>
+    <p class="text-center">Trouvez des réponses aux questions fréquemment posées ou contactez notre support.</p>
+    
+    <div class="faq-section mt-4">
+      <h3>Questions Fréquemment Posées</h3>
+      <div *ngFor="let faq of faqs" class="faq-item">
+        <h5 (click)="faq.isOpen = !faq.isOpen" class="faq-question">
+          {{ faq.question }}
+          <i [ngClass]="{'fa-solid fa-chevron-down': !faq.isOpen, 'fa-solid fa-chevron-up': faq.isOpen}" class="faq-toggle"></i>
+        </h5>
+        <div *ngIf="faq.isOpen" class="faq-answer">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  

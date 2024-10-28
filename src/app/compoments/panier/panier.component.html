@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<section id="panier-items">
+  <div class="container text-center mt-5 py-5">
+    <h3 class="cart-title">Review Your Cart</h3>
+    <img src="shopping-bags.png" class="cart-icon">
+    <hr class="mx-auto">
+    <p class="cart-description">
+      <img src="check-mark.png" class="checkmark-icon">
+      Check your cart items before validation.
+    </p>
+  </div>
+</section>
+
+<div class="container cart-table-container">
+  <table class="table cart-table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of detailsPanier; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td class="item-detail">
+          <img [src]="detail.produit.thumbnail" class="img-thumbnail" alt="Product Image">
+          <span>{{ detail.produit.title }}</span>
+        </td>
+        <td>
+          <input type="number" [(ngModel)]="detail.qte" min="1" class="quantity-input">
+        </td>
+        <td>{{ detail.produit.price }} €</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container text-center mt-4">
+  <button class="btn btn-success btn-lg" (click)="onOrder()" [disabled]="!isAuthenticated">Commander</button>
+  <p *ngIf="!isAuthenticated" class="text-danger mt-2">Veuillez vous connecter pour passer une commande.</p>
+</div>

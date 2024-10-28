@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<div *ngIf="product" class="product-container">
+  <div class="product-detail">
+    <h2>{{ product.title }}</h2>
+
+    <div class="product-image-container">
+      <img [src]="product.thumbnail" alt="{{ product.title }}" class="product-thumbnail">
+      <div class="product-thumbnails">
+        <img *ngFor="let img of product.images" [src]="img" alt="{{ product.title }}" class="small-thumbnail">
+      </div>
+    </div>
+
+    <div class="product-info">
+      <h3>Détails du produit</h3>
+      <p><strong>Prix:</strong> {{ product.price }} €</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+      <p><strong>Catégorie:</strong> {{ product.categorie }}</p>
+      <p><strong>Stock:</strong> {{ product.stock }} unités</p>
+      <p><strong>Politique de retour:</strong> {{ product.returnPolicy }}</p>
+      <p><strong>Disponibilité:</strong> {{ product.availabilityStatus }}</p>
+    </div>
+
+    <div class="reviews">
+      <h3>Avis des utilisateurs</h3>
+      <div *ngFor="let review of product.reviews" class="review-item">
+        <p><strong>{{ review.reviewerName }}</strong> <em>{{ review.date | date:'short' }}</em></p>
+        <p><strong>Note:</strong> {{ review.rating }}/5</p>
+        <p>{{ review.comment }}</p>
+      </div>
+    </div>
+
+    <!-- Formulaire de commentaire -->
+    <div class="comment-form mt-4">
+      <h3>Laisser un commentaire</h3>
+      <form (ngSubmit)="submitComment()" #commentForm="ngForm">
+        <div class="mb-3">
+          <label for="username" class="form-label">Nom</label>
+          <input type="text" id="username" [(ngModel)]="newComment.user.username" name="username" required class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" [(ngModel)]="newComment.user.mail" name="email" required class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="rating" class="form-label">Note</label>
+          <select id="rating" [(ngModel)]="newComment.rating" name="rating" required class="form-control">
+            <option value="" disabled selected>Sélectionner une note</option>
+            <option *ngFor="let rate of [1, 2, 3, 4, 5]" [value]="rate">{{ rate }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="comment" class="form-label">Commentaire</label>
+          <textarea id="comment" [(ngModel)]="newComment.comment" name="comment" required class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="commentForm.invalid">Envoyer</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Chargement des détails du produit...</p>
+</ng-template>

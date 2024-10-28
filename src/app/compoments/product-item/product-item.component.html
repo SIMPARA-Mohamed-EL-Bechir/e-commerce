@@ -1,0 +1,32 @@
+
+
+<div class="product  text-center ">      
+    <img class="img-fluid mb-3" [src]="produit.thumbnail" alt="palette" (click)="onImageClick(produit.id)">
+    <div class="star">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+    </div>
+    <h5 class="p-name">{{produit.title}}</h5>
+    <h4 class="p-price"> ${{produit.price}}</h4>
+    
+    <div>
+      <button *ngIf="produit.stock > 0" type="button" (click)="addToPanier()" class="btn btn-primary">Ajouter au
+        panier</button>
+      <br>
+        <span *ngIf="getState() === 'En stock'; else outOfStock" style="color: green;">
+          {{ getState() }}
+        </span>
+        
+        <ng-template #outOfStock>
+          <span style="color: red;">{{ getState() }}</span>
+        </ng-template>
+      </div>
+
+  </div>
+
+
+
+

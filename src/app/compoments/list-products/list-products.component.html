@@ -1,0 +1,19 @@
+<app-navbar (searchedText)="onSearchByKey($event)" (displayedPanier)="displayPanier($event)"></app-navbar>
+
+<div *ngIf="!panierIsDisplayed; else monPanier">
+  <section id="featured" class="my-5 pb-5">
+    
+    <div class="row mx-auto container-fluid product-grid">
+      <app-product-item 
+        *ngFor="let p of products" 
+        (selectedProduct)="addToPanier(p)" 
+        [produit]="p" 
+        class="col-lg-3 col-md-4 col-12 mb-4">
+      </app-product-item>
+    </div>
+  </section>
+</div>
+
+<ng-template #monPanier>
+  <app-panier [detailsPanier]="detailsPanier"></app-panier>
+</ng-template>

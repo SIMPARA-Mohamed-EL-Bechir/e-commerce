@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img class="navbar-logo" src="logo.png" alt="logo" style="height: 40px;">
+      <span class="logo-name ml-3">EMI-SHOP</span>
+    </a>
+
+    <!-- Search Input -->
+    <div class="search-container mx-4">
+      <input (ngModelChange)="onSearchByKey()" [(ngModel)]="searchKey" type="text" class="search-input" placeholder="Search here..." />
+      <i class="fa fa-search search-icon"></i>
+    </div>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/panier">Panier</a>
+        </li>
+
+        <!-- Gestion de la connexion/déconnexion -->
+        <li class="nav-item">
+          <a *ngIf="!isAuthenticated" routerLink="/login" routerLinkActive="active" class="nav-link">Se Connecter</a>
+          <a *ngIf="isAuthenticated" (click)="onLogout()" class="nav-link" style="cursor: pointer;">Se Déconnecter</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/aide">Aide</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/panier" class="nav-link">
+            <i class="fa-solid fa-cart-shopping cart-icon"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

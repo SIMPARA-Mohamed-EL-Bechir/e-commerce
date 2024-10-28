@@ -1,0 +1,58 @@
+/* Background Styling */
+body {
+  background-color: #f5f7fa;  /* Gris clair pour une ambiance douce et moderne */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Section "Featured Products" */
+#featured {
+  background: linear-gradient(135deg, #ffffff, #f0f0f5); /* Dégradé subtil */
+  padding: 50px 0;
+  border-radius: 15px;
+}
+
+/* Container for products */
+.product-grid {
+  background-color: #ffffff; /* Blanc pour bien mettre en valeur les produits */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Ombre légère pour donner de la profondeur */
+}
+
+/* Product items */
+app-product-item {
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  padding: 15px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+app-product-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Augmente l'ombre au hover */
+}
+
+/* Section background for the cart */
+#panier-items {
+  background-color: #fbf5f3; /* Fond beige clair pour différencier la section panier */
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Featured title and description */
+.featured-title {
+  color: #fb774b; /* Orange vif pour un contraste avec le fond */
+}
+
+.featured-description {
+  color: #555;
+}
+
+/* Cart table */
+.cart-table {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+}

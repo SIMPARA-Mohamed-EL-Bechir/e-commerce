@@ -1,0 +1,47 @@
+.contact-info {
+    background-color: #f8f9fa; /* Couleur de fond légère pour contraster avec le texte */
+    padding: 20px;
+    border-radius: 10px; /* Coins arrondis pour un effet moderne */
+    text-align: center;  /* Centrage du contenu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour ajouter de la profondeur */
+    margin-top: 50px;
+    max-width: 600px; /* Limite la largeur pour que ça reste lisible sur grand écran */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-info h3 {
+    font-size: 24px;
+    color: #333; /* Couleur sombre pour le texte du titre */
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    font-size: 16px;
+    color: #555; /* Couleur grise pour le texte normal */
+    line-height: 1.6; /* Espacement des lignes pour améliorer la lisibilité */
+}
+
+.contact-info a {
+    color: #3e8ee3; /* Bleu pour les liens pour les différencier du texte normal */
+    text-decoration: none; /* Supprime le soulignement des liens */
+}
+
+.contact-info a:hover {
+    text-decoration: underline; /* Soulignement lors du survol pour indiquer l'interactivité */
+}
+
+@media (max-width: 768px) {
+    .contact-info {
+        padding: 15px;
+        max-width: 100%; /* Ajuste la largeur pour les petits écrans */
+    }
+
+    .contact-info h3 {
+        font-size: 20px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+/* Background Styling for dark mode */
+body {
+    background-color: #2c3e50; /* Bleu marine foncé pour le fond */
+    color: #ecf0f1; /* Texte clair */
+  }
+  
+  /* Section "Featured Products" */
+  #featured {
+    background: linear-gradient(135deg, #34495e, #2c3e50); /* Dégradé sombre */
+    padding: 50px 0;
+    border-radius: 15px;
+  }
+  
+  .product-grid {
+    background-color: #34495e; /* Carte des produits plus foncée */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre renforcée */
+  }
+  
+  app-product-item {
+    background-color: #3b4a5a; /* Fond sombre pour les items */
+    color: #108aa8; /* Texte clair */
+  }
+  
+  #panier-items {
+    background-color: #3b4a5a; /* Section panier en mode sombre */
+  }
+  
+  
