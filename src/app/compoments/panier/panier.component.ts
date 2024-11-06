@@ -24,7 +24,6 @@ export class PanierComponent implements OnInit {
   orderPlaced = false; 
   errorMessage: string | null = null; 
 
-  public c1!: Commande; 
 
   constructor(
     private panierService: PanierService,
@@ -81,10 +80,6 @@ export class PanierComponent implements OnInit {
       qte: item.qte
     }));
 
-    this.c1 = new Commande(userId, new Date(), details, this.getTotalPrice());
-    console.log('Commande:', this.c1); 
-
-    await this.commandeService.saveCommande(this.c1);
     alert('Commande saved !!!');
   });
   
