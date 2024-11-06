@@ -5,11 +5,16 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { FormsModule } from '@angular/forms';
-import { AngularFireModule } from '@angular/fire/compat';  
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';  
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';  
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { 
+  Firestore,
+  provideFirestore,
+  getFirestore
+} from '@angular/fire/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkecOz2KlVq8qNrW3925ADfTgZLHym9ro",
@@ -26,12 +31,13 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideClientHydration(),
     provideHttpClient(), 
-    ProductService, 
+    ProductService,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
     importProvidersFrom(FormsModule),
     importProvidersFrom(AngularFireModule.initializeApp(firebaseConfig)),
     importProvidersFrom(AngularFireAuthModule),
-    AngularFireAuth
+    provideFirestore(() => getFirestore()), // Correctly providing Firestore
+    AngularFireAuth // This may not be necessary if you're already using provideAuth
   ]
-};
+}

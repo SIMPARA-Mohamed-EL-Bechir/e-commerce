@@ -33,11 +33,18 @@
         </td>
         <td>{{ detail.produit.price }} €</td>
       </tr>
+
     </tbody>
   </table>
 </div>
 
+<!-- Section de validation de la commande -->
 <div class="container text-center mt-4">
-  <button class="btn btn-success btn-lg" (click)="onOrder()" [disabled]="!isAuthenticated">Commander</button>
+  <button (click)="onOrder()" class="btn btn-success btn-lg"  [disabled]="!isAuthenticated || orderPlaced">Commander</button>
   <p *ngIf="!isAuthenticated" class="text-danger mt-2">Veuillez vous connecter pour passer une commande.</p>
+  
+  <!-- Affichage du message de confirmation après commande -->
+  <div *ngIf="orderPlaced" class="alert alert-success mt-3">
+    Votre commande a été créée avec succès !
+  </div>
 </div>
