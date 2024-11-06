@@ -7,14 +7,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { Router } from '@angular/router';
 import { AuthfirebaseService } from '../../services/authfirebase.service';
 import { UserInterface } from '../../models/user.interface';
-import { CommandeComponent } from "../commande/commande.component";
 import { CommandeService } from '../../services/commande.service';
-import { Commande } from '../../models/commande';
 
 @Component({
   selector: 'app-panier',
   standalone: true,
-  imports: [NgFor, FormsModule, NavbarComponent, NgIf, CommandeComponent],
+  imports: [NgFor, FormsModule, NavbarComponent, NgIf],
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.css'], // Corrected to styleUrls
 })
