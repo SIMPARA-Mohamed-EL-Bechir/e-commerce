@@ -23,10 +23,10 @@ export class PanierComponent implements OnInit {
   displayedColumns: string[] = ['description', 'prix', 'quantite', 'total', 'remove'];
 
   isAuthenticated = false;
-  orderPlaced = false; // Track whether the order was placed successfully
-  errorMessage: string | null = null; // To store any error messages
+  orderPlaced = false; 
+  errorMessage: string | null = null; 
 
-  public c1!: Commande; // Instance de Command pour stocker la commande
+  public c1!: Commande; 
 
   constructor(
     private panierService: PanierService,
@@ -51,8 +51,8 @@ export class PanierComponent implements OnInit {
 
   clear(): void {
     this.panierService.clearPanier();
-    this.orderPlaced = false; // Reset orderPlaced when clearing the cart
-    this.errorMessage = null; // Clear any previous error messages
+    this.orderPlaced = false; 
+    this.errorMessage = null;
   }
 
   remove(productId: number): void {
@@ -65,7 +65,7 @@ export class PanierComponent implements OnInit {
       return; 
     }
     this.authService.getCurrentUserId().subscribe(async (userId) => {
-      console.log('User ID:', userId); // Pour le débogage
+      console.log('User ID:', userId); 
 
       if (!userId) {
         console.log('Vous devez être connecté pour valider une commande.');
@@ -77,19 +77,17 @@ export class PanierComponent implements OnInit {
       return;
     }
 
-    // Créer un tableau de détails à partir du panier
+    
     const details = this.detailsPanier.map(item => ({
       produit: item.produit,
       qte: item.qte
     }));
 
-    // Créer une commande avec l'ID de l'utilisateur, la date actuelle, les détails du panier et le prix total
     this.c1 = new Commande(userId, new Date(), details, this.getTotalPrice());
-    console.log('Commande:', this.c1); // Pour le débogage
+    console.log('Commande:', this.c1); 
 
-    // Enregistrer la commande
     await this.commandeService.saveCommande(this.c1);
-    alert('Commande saved!');
+    alert('Commande saved !!!');
   });
   
 }
