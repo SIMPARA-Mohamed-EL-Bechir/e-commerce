@@ -61,6 +61,10 @@ export class PanierComponent implements OnInit {
       this.router.navigate(['/login']);
       return; 
     }
+    if (this.detailsPanier.length === 0) {
+      alert('Votre panier est vide. Ajoutez des produits pour continuer.');
+      return;
+    }
     this.authService.getCurrentUserId().subscribe(async (userId) => {
       console.log('User ID:', userId); 
 
@@ -68,13 +72,6 @@ export class PanierComponent implements OnInit {
         console.log('Vous devez être connecté pour valider une commande.');
         return;
       }
-
-    if (this.detailsPanier.length === 0) {
-      alert('Votre panier est vide. Ajoutez des produits pour continuer.');
-      return;
-    }
-
-    
     const details = this.detailsPanier.map(item => ({
       produit: item.produit,
       qte: item.qte
